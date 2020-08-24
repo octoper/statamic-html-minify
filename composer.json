@@ -1,0 +1,57 @@
+{
+    "name": "octoper/statamic-html-minify",
+    "description": "An addon to minify HTML for Statamic v3",
+    "keywords": [
+        "octoper",
+        "statamic-html-minify"
+    ],
+    "authors": [
+        {
+            "name": "Vaggelis Yfantis",
+            "email": "me@octoper.me",
+            "homepage": "https://octoper.me",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "statamic/cms": "^3.0@beta",
+        "voku/html-min": "^4.4"
+    },
+    "require-dev": {
+        "nunomaduro/collision": "^4.2",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "orchestra/testbench": "^5.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Octoper\\HtmlMinify\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Octoper\\HtmlMinify\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "statamic": {
+            "name": "HTML Minify",
+            "description": "An addon to minify HTML for Statamic v3"
+        },
+        "laravel": {
+            "providers": [
+                "Octoper\\HtmlMinify\\HtmlMinifyServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
