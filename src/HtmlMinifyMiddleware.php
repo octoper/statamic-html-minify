@@ -3,12 +3,18 @@
 namespace Octoper\HtmlMinify;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use voku\helper\HtmlMin;
 
 class HtmlMinifyMiddleware
 {
-    public function handle(Request $request, \Closure $next): Response
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle(Request $request, \Closure $next)
     {
         $response = $next($request);
 
