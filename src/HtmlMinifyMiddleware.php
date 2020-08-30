@@ -12,7 +12,7 @@ class HtmlMinifyMiddleware
     {
         $response = $next($request);
 
-        $config_prefix = "statamic.html-minify";
+        $config_prefix = "html-minify";
 
         $html = (new HtmlMin())
             ->doOptimizeViaHtmlDomParser(
