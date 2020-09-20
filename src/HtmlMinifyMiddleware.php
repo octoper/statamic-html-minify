@@ -10,15 +10,16 @@ class HtmlMinifyMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
+     *
      * @return mixed
      */
     public function handle(Request $request, \Closure $next)
     {
         $response = $next($request);
 
-        $config_prefix = "html-minify";
+        $config_prefix = 'html-minify';
 
         $html = (new HtmlMin())
             ->doOptimizeViaHtmlDomParser(
