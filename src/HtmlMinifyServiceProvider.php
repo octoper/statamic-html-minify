@@ -8,7 +8,7 @@ class HtmlMinifyServiceProvider extends AddonServiceProvider
 {
     protected $middlewareGroups = [
         'web' => [
-            HtmlMinifyMiddleware::class
+            HtmlMinifyMiddleware::class,
         ],
     ];
 
@@ -17,7 +17,7 @@ class HtmlMinifyServiceProvider extends AddonServiceProvider
         parent::boot();
 
         $this->publishes([
-            __DIR__ . '/../config/html-minify.php' => config_path('html-minify.php'),
+            __DIR__.'/../config/html-minify.php' => config_path('html-minify.php'),
         ], 'statamic-html-minify-config');
     }
 
@@ -27,7 +27,8 @@ class HtmlMinifyServiceProvider extends AddonServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/html-minify.php', 'html-minify'
+            __DIR__.'/../config/html-minify.php',
+            'html-minify'
         );
     }
 }
