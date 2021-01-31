@@ -18,6 +18,10 @@ class HtmlMinifyMiddleware
     public function handle(Request $request, \Closure $next)
     {
         $response = $next($request);
+        
+        if ($response instanceof StreamedResponse) {
+            return $next($request);
+        }
 
         $config_prefix = 'html-minify';
 
