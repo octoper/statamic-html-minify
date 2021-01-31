@@ -19,6 +19,10 @@ class HtmlMinifyMiddleware
     {
         $response = $next($request);
 
+        if ($response instanceof StreamedResponse) {
+            return $next($request);
+        }
+
         $config_prefix = 'html-minify';
 
         $html = (new HtmlMin())
