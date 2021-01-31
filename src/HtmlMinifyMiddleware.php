@@ -3,6 +3,7 @@
 namespace Octoper\HtmlMinify;
 
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 use voku\helper\HtmlMin;
 
 class HtmlMinifyMiddleware
