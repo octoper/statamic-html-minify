@@ -1,8 +1,9 @@
 <?php
 
-namespace Octoper\StatamicHtmlMinify\Tests;
+namespace Octoper\HtmlMinify\Tests;
 
-use Octoper\StatamicHtmlMinify\HtmlMinifyServiceProvider;
+
+use Octoper\HtmlMinify\HtmlMinifyServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Statamic\Extend\Manifest;
 use Statamic\Providers\StatamicServiceProvider;
@@ -30,9 +31,9 @@ abstract class TestCase extends OrchestraTestCase
         parent::getEnvironmentSetUp($app);
 
         $app->make(Manifest::class)->manifest = [
-            'statamic-package-statamic-html-minify' => [
-                'id'        => 'octoper/statamic-package-statamic-html-minify',
-                'namespace' => 'DoubleThreeDigital\\AddonBoilerplate\\',
+            'statamic-html-minify' => [
+                'id'        => 'octoper/statamic-html-minify',
+                'namespace' => 'Octoper\\StatamicHtmlMinify',
             ],
         ];
     }
