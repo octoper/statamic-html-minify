@@ -34,7 +34,7 @@ abstract class TestCase extends OrchestraTestCase
             'statamic-html-minify' => [
                 'id'        => 'octoper/statamic-html-minify',
                 'namespace' => 'Octoper\\StatamicHtmlMinify',
-            ],
+            ]
         ];
     }
 
