@@ -2,6 +2,7 @@
 
 namespace Octoper\HtmlMinify;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -19,7 +20,7 @@ class HtmlMinifyMiddleware
     {
         $response = $next($request);
 
-        if ($response instanceof StreamedResponse) {
+        if ($response instanceof StreamedResponse || $response instanceof JsonResponse) {
             return $next($request);
         }
 
