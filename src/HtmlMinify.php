@@ -1,14 +1,11 @@
 <?php
 
-
 namespace Octoper\HtmlMinify;
-
 
 use voku\helper\HtmlMin;
 
 class HtmlMinify
 {
-
     /**
      * @var mixed
      */
@@ -16,6 +13,7 @@ class HtmlMinify
 
     /**
      * HtmlMinify constructor.
+     *
      * @param mixed $content
      */
     public function __construct($content)
@@ -58,7 +56,8 @@ class HtmlMinify
             ->minify($this->content);
     }
 
-    public function unminified() {
+    public function unminified()
+    {
         return $this->content;
     }
 }
