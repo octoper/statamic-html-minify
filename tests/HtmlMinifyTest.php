@@ -2,18 +2,12 @@
 
 namespace Octoper\HtmlMinify\Tests;
 
-use function PHPUnit\Framework\assertEquals;
+use function Spatie\Snapshots\assertMatchesSnapshot;
 
-class HtmlMinifyTest extends TestCase
-{
-    /** @test */
-    public function check_if_can_minify_html_with_middleware()
-    {
-        $response = $this->get('/html-minify/test');
+uses(TestCase::class);
 
-        assertEquals(
-            $response->content(),
-            '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Title</title></head> <body><p>Hello</p></body></html>'
-        );
-    }
-}
+it('can minify html', function () {
+    $minifiedHtml = $this->get('/html-minify/test')->getContent();
+
+    assertMatchesSnapshot($minifiedHtml);
+});
