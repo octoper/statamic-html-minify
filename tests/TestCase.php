@@ -2,7 +2,6 @@
 
 namespace Octoper\HtmlMinify\Tests;
 
-
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Octoper\HtmlMinify\HtmlMinifyMiddleware;
@@ -35,9 +34,9 @@ abstract class TestCase extends OrchestraTestCase
 
         $app->make(Manifest::class)->manifest = [
             'statamic-html-minify' => [
-                'id' => 'octoper/statamic-html-minify',
+                'id'        => 'octoper/statamic-html-minify',
                 'namespace' => 'Octoper\\StatamicHtmlMinify',
-            ]
+            ],
         ];
     }
 
@@ -51,7 +50,7 @@ abstract class TestCase extends OrchestraTestCase
         ];
 
         foreach ($configs as $config) {
-            $app['config']->set("statamic.$config", require(__DIR__ . "/../vendor/statamic/cms/config/{$config}.php"));
+            $app['config']->set("statamic.$config", require(__DIR__."/../vendor/statamic/cms/config/{$config}.php"));
         }
 
         $app['config']->set('statamic.users.repository', 'file');
@@ -61,6 +60,7 @@ abstract class TestCase extends OrchestraTestCase
      * Define environment setup.
      *
      * @param Application $app
+     *
      * @return void
      */
     protected function defineEnvironment($app)
