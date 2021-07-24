@@ -63,27 +63,20 @@ abstract class TestCase extends OrchestraTestCase
      *
      * @return void
      */
-    protected function defineEnvironment($app)
+    protected function defineEnvironment($app): void
     {
         $app['config']->set('html-minify.optimizeViaHtmlDomParser', true);
 
         // Workaround for registering routes for tests
         Statamic::booted(function () {
             Statamic::pushWebRoutes(function () {
-                Route::namespace('\\Octoper\\HtmlMinify\\\Http\\Controllers')->group(function () {
+                Route::namespace('\\Octoper\\HtmlMinify\\\Http\\Controllers')->group(function (){
                     Route::get('/html-minify/test', function () {
-                        return <<<'HTML'
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <p>Hello</p>
-</body>
-</html>
-HTML;
+                        return file_get_contents(__DIR__ . '/testPages/simpleMinify.html');
+                    })->middleware(HtmlMinifyMiddleware::class);
+
+                    Route::get('/html-minify/test/remove-comments', function () {
+                        return file_get_contents(__DIR__ . '/testPages/removeComments.html');
                     })->middleware(HtmlMinifyMiddleware::class);
                 });
             });
