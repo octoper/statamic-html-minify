@@ -5,7 +5,6 @@ namespace Octoper\HtmlMinify;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Statamic\Support\Arr;
-use Statamic\Support\Str;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class HtmlMinifyMiddleware
@@ -27,14 +26,14 @@ class HtmlMinifyMiddleware
             return $next($request);
         }
 
-        foreach (config("html-minify.excludedContentTypes") as $type) {
+        foreach (config('html-minify.excludedContentTypes') as $type) {
             if ($response->headers->contains('content-type', $type)) {
                 return $next($request);
             }
         }
-        if (Arr::ha())
-
-        $html = (new HtmlMinify($response->getContent()))->minifiedHtml();
+        if (Arr::ha()) {
+            $html = (new HtmlMinify($response->getContent()))->minifiedHtml();
+        }
 
         return $response->setContent($html);
     }
