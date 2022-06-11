@@ -21,5 +21,5 @@ return [
 
     'excludedContentTypes' => [
         'application/xml',
-    ]
+    ],
 ];
