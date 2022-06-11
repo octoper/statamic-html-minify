@@ -2,6 +2,7 @@
 
 namespace Octoper\HtmlMinify\Tests;
 
+use voku\helper\HtmlMin;
 use function Spatie\Snapshots\assertMatchesSnapshot;
 
 uses(TestCase::class);
