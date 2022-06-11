@@ -18,4 +18,8 @@ return [
     'removeSpacesBetweenTags'    => false,
     'removeOmittedQuotes'        => false,
     'removeOmittedHtmlTags'      => false,
+
+    'excludedContentTypes' => [
+        'application/xml',
+    ],
 ];
