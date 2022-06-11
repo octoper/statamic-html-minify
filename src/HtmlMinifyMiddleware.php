@@ -31,10 +31,9 @@ class HtmlMinifyMiddleware
                 return $next($request);
             }
         }
-        if (Arr::ha()) {
-            $html = (new HtmlMinify($response->getContent()))->minifiedHtml();
-        }
 
+
+        $html = (new HtmlMinify($response->getContent()))->minifiedHtml();
         return $response->setContent($html);
     }
 }
