@@ -4,6 +4,7 @@ namespace Octoper\HtmlMinify;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class HtmlMinifyMiddleware
@@ -20,12 +21,12 @@ class HtmlMinifyMiddleware
     {
         $response = $next($request);
 
-        if ($response instanceof StreamedResponse || $response instanceof JsonResponse) {
-            return $next($request);
+        if ($response instanceof Response && $response->headers->contains('Content-Type', 'text/html')) {
+            $html = (new HtmlMinify($response->getContent()))->minifiedHtml();
+
+            return $response->setContent($html);
         }
 
-        $html = (new HtmlMinify($response->getContent()))->minifiedHtml();
-
-        return $response->setContent($html);
+        return $next($request);
     }
 }
