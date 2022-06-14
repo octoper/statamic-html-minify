@@ -21,12 +21,23 @@ class HtmlMinifyMiddleware
     {
         $response = $next($request);
 
-        if ($response instanceof Response && $response->headers->contains('Content-Type', 'text/html')) {
+        if ($response instanceof StreamedResponse || $response instanceof JsonResponse) {
+            return $next($request);
+        }
+
+        if ($response instanceof Response && $this->isValidHTMLResponse($response)) {
             $html = (new HtmlMinify($response->getContent()))->minifiedHtml();
 
             return $response->setContent($html);
         }
 
         return $next($request);
+    }
+
+    protected function isValidHTMLResponse($response)
+    {
+        $contentType = $response->headers->get('Content-Type');
+
+        return stripos($contentType, 'text/html') !== false;
     }
 }

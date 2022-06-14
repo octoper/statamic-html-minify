@@ -72,11 +72,15 @@ abstract class TestCase extends OrchestraTestCase
             Statamic::pushWebRoutes(function () {
                 Route::namespace('\\Octoper\\HtmlMinify\\\Http\\Controllers')->group(function () {
                     Route::get('/html-minify/test', function () {
-                        return file_get_contents(__DIR__.'/testPages/simpleMinify.html');
+                        return response(file_get_contents(__DIR__.'/testPages/simpleMinify.html'), '200', [
+                                'Content-Type' => 'text/html'
+                            ]);
                     })->middleware(HtmlMinifyMiddleware::class);
 
                     Route::get('/html-minify/test/remove-comments', function () {
-                        return file_get_contents(__DIR__.'/testPages/removeComments.html');
+                        return response(file_get_contents(__DIR__.'/testPages/removeComments.html'), '200', [
+                            'Content-Type' => 'text/html'
+                        ]);
                     })->middleware(HtmlMinifyMiddleware::class);
                 });
             });
