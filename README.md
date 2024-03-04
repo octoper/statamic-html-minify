@@ -1,4 +1,5 @@
 # HTML Minify for Statamic V3
+> **Looking for maintainers**: As I'm not using Statamic these days and I don't have a the time to maintain the package I'm looking for anyone who want to take the ownerhip of it! You can reach out via email me@octoper.me
 
 ![Statami v3](https://img.shields.io/badge/Statamic-3.0+-FF269E)
 ![Packagist](https://img.shields.io/packagist/v/octoper/statamic-html-minify)
