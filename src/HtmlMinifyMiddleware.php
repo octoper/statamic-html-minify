@@ -22,7 +22,7 @@ class HtmlMinifyMiddleware
         $response = $next($request);
 
         if ($response instanceof StreamedResponse || $response instanceof JsonResponse) {
-            return $next($request);
+            return $response;
         }
 
         if ($response instanceof Response && $this->isValidHTMLResponse($response)) {
@@ -31,7 +31,7 @@ class HtmlMinifyMiddleware
             return $response->setContent($html);
         }
 
-        return $next($request);
+        return $response;
     }
 
     protected function isValidHTMLResponse($response)
